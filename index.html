@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+   <style>
+
+         #clock {
+            /* font-family :Verdana, Geneva, Tahoma, sans-serif; */
+            font-size: 167px;
+            width: 900px;
+            margin: 250px auto 0;
+            text-align: center;
+            border: 4px solid rgb(0, 26, 255);
+            padding: 20px;
+            border-radius: 20px;
+            background-color: aqua;
+        }
+
+       
+   </style>
+
+
+</head>
+<body>
+  
+        <div id="clock"></div>
+
+
+
+
+  <script>
+             //update clock every second
+              setInterval(showTime, 1000)
+              //call the function for get real time
+              function showTime() {
+                let date = new Date()
+                let hours = date.getHours()
+                let min = date.getMinutes()
+                let seconds = date.getSeconds()
+
+                //write a condition for time formate update
+                let amPm = hours >= 12 ? 'PM' : 'AM'
+
+                //condition for local time generate
+                hours = hours % 12 || 12
+                hours = hours < 10 ? '0' + hours : hours
+                min = min < 10 ? '0' + min : min
+                seconds = seconds < 10 ? '0' + seconds : seconds
+
+
+                let currentTime = `${hours}:${min}:${seconds} ${amPm}`
+                document.getElementById('clock').innerHTML = currentTime
+              }
+  </script>
+</body>
+</html>
